@@ -9,6 +9,8 @@ def random_string(prefix, maxlen):
 
 
 def test_add_project(app):
+    if app.session.is_logged_in() < 0:
+        app.session.login("administrator", "root")
     project = Project(name=random_string('name', 10), description=random_string('test', 10))
     old_projects = app.project.get_project_list()
     app.project.create(project)

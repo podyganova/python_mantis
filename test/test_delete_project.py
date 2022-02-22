@@ -3,6 +3,8 @@ import random
 
 
 def test_delete_project(app):
+    if app.session.is_logged_in() < 0:
+        app.session.login("administrator", "root")
     old_projects = app.project.get_project_list()
     if len(old_projects) == 0:
         app.project.create(Project(name="test", description="test"))
