@@ -20,3 +20,12 @@ class SoapHelper:
         for project in client_list:
             list_projects.append(Project(name=project["name"]))
         return (list_projects)
+
+    def can_login(self, username, password):
+        client = Client(self.app.soap_url)
+        try:
+            client.service.mc_login(username, password)
+            return True
+        except WebFault:
+            return False
+
