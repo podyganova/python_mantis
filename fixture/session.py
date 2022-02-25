@@ -13,6 +13,7 @@ class SessionHelper:
         wd.find_element_by_name("password").clear()
         wd.find_element_by_name("password").send_keys(password)
         wd.find_element_by_css_selector('input[type="submit"]').click()
+        assert self.app.soap.can_login("administrator", "root")
 
     def logout(self,):
         wd = self.app.wd

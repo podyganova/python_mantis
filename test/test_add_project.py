@@ -9,7 +9,6 @@ def random_string(prefix, maxlen):
 
 
 def test_add_project(app):
-    assert app.soap.can_login("administrator", "root")
     project = Project(name=random_string('name', 10), description=random_string('test', 10))
     old_projects = app.soap.get_project_list()
     app.project.create(project)
