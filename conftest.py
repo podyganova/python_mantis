@@ -25,7 +25,7 @@ def app(request):
     web_login = load_config(request.config.getoption("--target"))['webadmin']
     if fixture is None or not fixture.is_valid():
         fixture = Application(browser=browser, base_url=web_config['baseUrl'], soap_url=web_config['soapUrl'], setting=web_login)
-    fixture.session.login(web_login['username'], web_login['password'])
+    fixture.session.ensure_login(web_login['username'], web_login['password'])
     return fixture
 
 
