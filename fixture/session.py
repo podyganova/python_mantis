@@ -33,7 +33,7 @@ class SessionHelper:
 
     def get_login_user(self):
         wd = self.app.wd
-        return wd.find_element_by_xpath("//span[@class='user-info']").text
+        return wd.find_element_by_xpath("//span[@class='italic']").text
 
     def ensure_login(self, username, password):
         if self.is_logged_in():
